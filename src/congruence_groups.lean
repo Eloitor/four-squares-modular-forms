@@ -15,11 +15,12 @@ section basic_matrix_lemmas
     variable M: SL₂(ℤ)
 
     lemma inverse₀₀ : M⁻¹ 0 0 = M 1 1 :=
-    show (1*(1* ( _ * 1)): ℤ) + ( -1 *( _ * 0) + 0) = _ , 
     begin
-        ring,
+        simp,
+        unfold adjugate,
         sorry,
     end
+    
 
     lemma inverse₀₁ : M⁻¹ 0 1 = - M 0 1 :=
     begin
@@ -30,7 +31,9 @@ section basic_matrix_lemmas
     --show (1 * (_ * 0): ℤ) + (-1 * (1* (_ * 1)) + 0) = _, by {sorry}
 
     lemma inverse₁₀ : M⁻¹ 1 0 = - M 1 0 :=
-    show (1 * (0 * (_ * 1)) : ℤ) + (-1 * (_ * _) + 0) = _, by {ring, sorry}
+    begin
+        sorry
+    end
 
 end basic_matrix_lemmas
 
@@ -48,10 +51,7 @@ namespace special_linear_group
                 rintro ⟨M₁, M₂, M₃⟩,
                 cases M,
                 rw det_2x2 at M_property,
-                have M_prop_mod_N : M_val 0 0 * M_val 1 1 - M_val 1 0 * M_val 0 1 ≡ 1 [ZMOD N]:=
-                begin
-                    tauto,
-                end,
+                have M_prop_mod_N : M_val 0 0 * M_val 1 1 - M_val 1 0 * M_val 0 1 ≡ 1 [ZMOD N]:= by tauto,
                 have P₁: M_val 1 0 * M_val 0 1 ≡ 0 * 0 [ZMOD N],
                     apply int.modeq.modeq_mul;
                     assumption,
@@ -148,17 +148,3 @@ open int.modeq
 end special_linear_group
 
 end congruence_subgroups
-
--- open special_linear_group
-    -- this notation includes parentheses so Γ is free for later use
--- notation `Γ(`N`)` := @principal_congurence_subgroup N _
-
-/--
-        A congruence subgroup is a subgroup Γ ≤ SL₂(ℤ) such that
-                                Γ(N) ≤ Γ ≤ SL₂(ℤ)  for some N ≥ 1   
- -/
---    class CongruenceSubgroup(Γ : subgroup SL₂(ℤ)):=
---        (N: nat)
---        [hN: fact(0 < N)]
---        (contains_principal_congruence_subgroup: @principal_congurence_subgroup N hN ≤ Γ)
---                                        -- I would like to write something like Γ(N) ≤ Γ)
