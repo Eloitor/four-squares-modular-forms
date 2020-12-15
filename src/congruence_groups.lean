@@ -15,13 +15,22 @@ section basic_matrix_lemmas
     variable M: SL₂(ℤ)
 
     lemma inverse₀₀ : M⁻¹ 0 0 = M 1 1 :=
-    show (1*(1* ( _ * 1)): ℤ) + ( -1 *( _ * 0) + 0) = _ , by {simp, ring}
+    show (1*(1* ( _ * 1)): ℤ) + ( -1 *( _ * 0) + 0) = _ , 
+    begin
+        ring,
+        sorry,
+    end
 
     lemma inverse₀₁ : M⁻¹ 0 1 = - M 0 1 :=
-    show (1 * (_ * 0): ℤ) + (-1 * (1* (_ * 1)) + 0) = _, by {simp, ring}
+    begin
+        simp,
+        unfold adjugate,
+        sorry,
+    end
+    --show (1 * (_ * 0): ℤ) + (-1 * (1* (_ * 1)) + 0) = _, by {sorry}
 
     lemma inverse₁₀ : M⁻¹ 1 0 = - M 1 0 :=
-    show (1 * (0 * (_ * 1)) : ℤ) + (-1 * (_ * _) + 0) = _, by {simp, ring}
+    show (1 * (0 * (_ * 1)) : ℤ) + (-1 * (_ * _) + 0) = _, by {ring, sorry}
 
 end basic_matrix_lemmas
 
@@ -140,9 +149,9 @@ end special_linear_group
 
 end congruence_subgroups
 
-open special_linear_group
+-- open special_linear_group
     -- this notation includes parentheses so Γ is free for later use
-notation `Γ(`N`)` := @principal_congurence_subgroup N _
+-- notation `Γ(`N`)` := @principal_congurence_subgroup N _
 
 /--
         A congruence subgroup is a subgroup Γ ≤ SL₂(ℤ) such that
@@ -153,4 +162,3 @@ notation `Γ(`N`)` := @principal_congurence_subgroup N _
 --        [hN: fact(0 < N)]
 --        (contains_principal_congruence_subgroup: @principal_congurence_subgroup N hN ≤ Γ)
 --                                        -- I would like to write something like Γ(N) ≤ Γ)
-  
