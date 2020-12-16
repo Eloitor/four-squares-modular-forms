@@ -13,27 +13,20 @@ local notation `SL₂`(R) := special_linear_group (fin 2) R
 section basic_matrix_lemmas
 
     variable M: SL₂(ℤ)
+    open matrix
+
 
     lemma inverse₀₀ : M⁻¹ 0 0 = M 1 1 :=
-    begin
-        simp,
-        unfold adjugate,
-        sorry,
-    end
-    
+    calc M⁻¹ 0 0 = (1 * ( 1* _)) + ( (-1)*( 0 * _ ) + 0) : refl _ 
+             ... = M 1 1 : by {simp, ring}
 
     lemma inverse₀₁ : M⁻¹ 0 1 = - M 0 1 :=
-    begin
-        simp,
-        unfold adjugate,
-        sorry,
-    end
-    --show (1 * (_ * 0): ℤ) + (-1 * (1* (_ * 1)) + 0) = _, by {sorry}
+    calc M⁻¹ 0 1 = (1 * (_ * 0) : ℤ) + ((-1)* (_ * 1) + 0) : refl _
+             ... = - M 0 1 : by {simp, ring}
 
     lemma inverse₁₀ : M⁻¹ 1 0 = - M 1 0 :=
-    begin
-        sorry
-    end
+    calc M⁻¹ 1 0 = (1 * (0 * _) : ℤ) + ((-1)* (_ * _) + 0) : refl _
+             ... = - M 1 0 : by {simp, ring}
 
 end basic_matrix_lemmas
 
