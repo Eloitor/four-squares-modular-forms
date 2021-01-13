@@ -17,8 +17,9 @@ section basic_matrix_lemmas
 
 
     lemma inverse₀₀ : M⁻¹ 0 0 = M 1 1 :=
-    calc M⁻¹ 0 0 = (1 * ( 1* _)) + ( (-1)*( 0 * _ ) + 0) : refl _ 
-             ... = M 1 1 : by simp
+    calc M⁻¹ 0 0  =  (1 * (1 * _)) + ( (-1) * (0 * (_ * _)) + 0):  refl _ 
+    --calc M⁻¹ 0 0 = (1 * ( 1* _)) + ( (-1)*( 0 * _ ) + 0) : refl _ 
+             ... = M 1 1 : by simp                
 
     lemma inverse₀₁ : M⁻¹ 0 1 = - M 0 1 :=
     calc M⁻¹ 0 1 = (1 * (_ * 0) : ℤ) + ((-1)* (_ * 1) + 0) : refl _
