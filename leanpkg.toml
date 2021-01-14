@@ -1,8 +1,8 @@
 [package]
 name = "four_squares_modular_forms"
 version = "0.1"
-lean_version = "leanprover-community/lean:3.23.0"
+lean_version = "leanprover-community/lean:3.24.0"
 path = "src"
 
 [dependencies]
-mathlib = {git = "https://github.com/leanprover-community/mathlib", rev = "0830bfd44ab1234510700793626ed4eda77a5085"}
+mathlib = {git = "https://github.com/leanprover-community/mathlib", rev = "71a3261c0ebeffa74e01aae7aa80d0a87877c3fc"}
