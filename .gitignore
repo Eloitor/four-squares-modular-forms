@@ -3,3 +3,5 @@
 /leanpkg.path
 *.aux
 *.fdb_latexmk
+.lake/
+.lake.lock
